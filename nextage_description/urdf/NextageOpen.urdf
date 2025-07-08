@@ -34,6 +34,68 @@
     </transmission>
   </xacro:macro>
 
+  <xacro:gazebo_nx_link name="WORKTABLE" color="Black" />
+  <link name="WORKTABLE">
+    <visual>
+      <origin xyz="0.55 0 -0.08" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://nextage_description/urdf/meshes/WORKTABLE.stl" scale="0.1 0.1 0.1" />
+      </geometry>
+      <material name="gray_worktable">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.55 0 -0.08" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://nextage_description/urdf/meshes/WORKTABLE.stl" scale="0.1 0.0 0.1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1000" />
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <inertia ixx="20" ixy="0" ixz="0" iyy="20" iyz="0" izz="20"/>
+    </inertial>
+  </link>
+
+  <xacro:transmission_nx_joint name="WORKTABLE_JOINT" />
+  <joint name="WORKTABLE_JOINT" type="fixed">
+    <parent link="WAIST"/>
+    <child  link="WORKTABLE"/>
+    <origin xyz="0 0 0" rpy="0 -0 0 "/>
+  </joint>
+
+  <xacro:gazebo_nx_link name="BDU" color="Black" />
+  <link name="BDU">
+    <visual>
+      <origin xyz="0.5 0 -0.08" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://nextage_description/urdf/meshes/BDU.stl" scale="1 1 1" />
+      </geometry>
+      <material name="gray_bdu">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.5 0 -0.08" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://nextage_description/urdf/meshes/BDU.stl" scale="1 1 1" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1000" />
+      <origin xyz="0 0 0" rpy="0 -0 0"/>
+      <inertia ixx="20" ixy="0" ixz="0" iyy="20" iyz="0" izz="20"/>
+    </inertial>
+  </link>
+
+  <xacro:transmission_nx_joint name="BDU_JOINT" />
+  <joint name="BDU_JOINT" type="fixed">
+    <parent link="WAIST"/>
+    <child  link="BDU"/>
+    <origin xyz="0 0 0" rpy="0 -0 0 "/>
+  </joint>
+
   <xacro:gazebo_nx_link name="WAIST" color="Black" />
   <link name="WAIST">
     <visual>
