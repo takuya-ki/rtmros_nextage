@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded: ~
       Splitter Ratio: 0.5
-    Tree Height: 630
+    Tree Height: 803
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -14,7 +14,7 @@ Panels:
       - /2D Nav Goal1
       - /Publish Point1
     Name: Tool Properties
-    Splitter Ratio: 0.588679
+    Splitter Ratio: 0.5886790156364441
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -25,6 +25,10 @@ Panels:
     Name: Time
     SyncMode: 0
     SyncSource: Image_head_L
+Preferences:
+  PromptSaveOnExit: true
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -34,7 +38,7 @@ Visualization Manager:
       Color: 160; 160; 164
       Enabled: true
       Line Style:
-        Line Width: 0.03
+        Line Width: 0.029999999329447746
         Value: Lines
       Name: Grid
       Normal Cell Count: 0
@@ -52,6 +56,21 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
+        BDU:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        CAMERA_HEAD_L_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        CAMERA_HEAD_R_Link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         CHEST_JOINT0_Link:
           Alpha: 1
           Show Axes: false
@@ -100,12 +119,12 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        CAMERA_HEAD_L_Link:
+        Link Tree Style: Links in Alphabetic Order
+        OPERATOR:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        Link Tree Style: Links in Alphabetic Order
         RARM_JOINT0_Link:
           Alpha: 1
           Show Axes: false
@@ -136,16 +155,20 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        CAMERA_HEAD_R_Link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         WAIST:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
+        WORKTABLE:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -202,9 +225,17 @@ Visualization Manager:
       Value: true
     - Class: rviz/TF
       Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        BDU:
+          Value: true
+        CAMERA_HEAD_L_Link:
+          Value: true
+        CAMERA_HEAD_R_Link:
+          Value: true
         CHEST_JOINT0_Link:
           Value: true
         HEAD_JOINT0_Link:
@@ -223,7 +254,7 @@ Visualization Manager:
           Value: true
         LARM_JOINT5_Link:
           Value: true
-        CAMERA_HEAD_L_Link:
+        OPERATOR:
           Value: true
         RARM_JOINT0_Link:
           Value: true
@@ -237,9 +268,11 @@ Visualization Manager:
           Value: true
         RARM_JOINT5_Link:
           Value: true
-        CAMERA_HEAD_R_Link:
-          Value: true
         WAIST:
+          Value: true
+        WORKTABLE:
+          Value: true
+        world:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -247,33 +280,41 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        WAIST:
-          CHEST_JOINT0_Link:
-            HEAD_JOINT0_Link:
-              HEAD_JOINT1_Link:
-                CAMERA_HEAD_L_Link:
-                  {}
-                CAMERA_HEAD_R_Link:
-                  {}
-            LARM_JOINT0_Link:
-              LARM_JOINT1_Link:
-                LARM_JOINT2_Link:
-                  LARM_JOINT3_Link:
-                    LARM_JOINT4_Link:
-                      LARM_JOINT5_Link:
-                        {}
-            RARM_JOINT0_Link:
-              RARM_JOINT1_Link:
-                RARM_JOINT2_Link:
-                  RARM_JOINT3_Link:
-                    RARM_JOINT4_Link:
-                      RARM_JOINT5_Link:
-                        {}
+        world:
+          BDU:
+            {}
+          OPERATOR:
+            {}
+          WAIST:
+            CHEST_JOINT0_Link:
+              HEAD_JOINT0_Link:
+                HEAD_JOINT1_Link:
+                  CAMERA_HEAD_L_Link:
+                    {}
+                  CAMERA_HEAD_R_Link:
+                    {}
+              LARM_JOINT0_Link:
+                LARM_JOINT1_Link:
+                  LARM_JOINT2_Link:
+                    LARM_JOINT3_Link:
+                      LARM_JOINT4_Link:
+                        LARM_JOINT5_Link:
+                          {}
+              RARM_JOINT0_Link:
+                RARM_JOINT1_Link:
+                  RARM_JOINT2_Link:
+                    RARM_JOINT3_Link:
+                      RARM_JOINT4_Link:
+                        RARM_JOINT5_Link:
+                          {}
+            WORKTABLE:
+              {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
+    Default Light: true
     Fixed Frame: WAIST
     Frame Rate: 30
   Name: root
@@ -285,7 +326,10 @@ Visualization Manager:
     - Class: rviz/FocusCamera
     - Class: rviz/Measure
     - Class: rviz/SetInitialPose
+      Theta std deviation: 0.2617993950843811
       Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
     - Class: rviz/SetGoal
       Topic: /move_base_simple/goal
     - Class: rviz/PublishPoint
@@ -295,27 +339,30 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.67016
+      Distance: 3.2965996265411377
       Enable Stereo Rendering:
-        Stereo Eye Separation: 0.06
+        Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.140808
-        Y: -0.0369538
-        Z: 0.238255
+        X: 0.514764666557312
+        Y: -0.3858935832977295
+        Z: -0.240507110953331
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
       Name: Current View
-      Near Clip Distance: 0.01
-      Pitch: 0.650399
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.5803988575935364
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.505404
+      Yaw: 0.6304047703742981
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 833
+  Height: 1016
   Hide Left Dock: false
   Hide Right Dock: false
   Image_hand_L:
@@ -326,7 +373,7 @@ Window Geometry:
     collapsed: false
   Image_head_R:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a000002b7fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed0000041a00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000002b7000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c000002610000000100000123000002b7fc0200000008fb000000180049006d006100670065005f0068006500610064005f004c01000000280000009f0000001600fffffffb000000180049006d006100670065005f0068006500610064005f005201000000cd000000c90000001600fffffffc0000019c0000009f0000001600fffffffa000000000100000002fb000000180049006d006100670065005f00680061006e0064005f004c0100000000ffffffff0000009300fffffffb000000180049006d006100670065005f0068006500610064005f005200000003a10000010f0000000000000000fb000000180049006d006100670065005f00680061006e0064005f004c010000016a0000009b0000000000000000fb000000180049006d006100670065005f00680061006e0064005f005201000002410000009e0000001600fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002c4000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005170000003efc0100000002fb0000000800540069006d0065010000000000000517000002f600fffffffb0000000800540069006d006501000000000000045000000000000000000000027e000002b700000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000035efc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed0000039500000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b0000035e000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c0000026100000001000001230000035efc0200000008fb000000180049006d006100670065005f0068006500610064005f004c010000003b000000c60000001600fffffffb000000180049006d006100670065005f0068006500610064005f00520100000107000000fa0000001600fffffffc00000207000000c70000001600fffffffa000000000100000002fb000000180049006d006100670065005f00680061006e0064005f004c0100000000ffffffff0000008b00fffffffb000000180049006d006100670065005f0068006500610064005f005200000003a10000010f0000000000000000fb000000180049006d006100670065005f00680061006e0064005f004c010000016a0000009b0000000000000000fb000000180049006d006100670065005f00680061006e0064005f005201000002d4000000c50000001600fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002c4000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073a0000003efc0100000002fb0000000800540069006d006501000000000000073a0000024400fffffffb0000000800540069006d00650100000000000004500000000000000000000004a10000035e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -335,6 +382,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1303
-  X: 437
-  Y: 1125
+  Width: 1850
+  X: 70
+  Y: 27
