@@ -17,7 +17,7 @@
     <xacro:gazebo_nx_link name="BDU" color="Black" />
     <link name="BDU">
         <visual>
-            <origin xyz="0.5 0 -0.08" rpy="0 -0 0"/>
+            <origin xyz="0.75 0 -0.08" rpy="0 -0 0"/>
             <geometry>
                 <mesh filename="package://nextage_description/urdf/meshes/BDU.stl" scale="1 1 1" />
             </geometry>
@@ -26,7 +26,7 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0.5 0 -0.08" rpy="0 -0 0"/>
+            <origin xyz="0.75 0 -0.08" rpy="0 -0 0"/>
             <geometry>
                 <mesh filename="package://nextage_description/urdf/meshes/BDU.stl" scale="1 1 1" />
             </geometry>
@@ -46,6 +46,7 @@
     </joint>
 
     <!-- operator link with STL mesh -->
+    <xacro:gazebo_nx_link name="OPERATOR" color="Gray" />
     <link name="OPERATOR">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -73,7 +74,7 @@
     <joint name="world_to_OPERATOR" type="fixed">
         <parent link="world"/>
         <child link="OPERATOR"/>
-        <origin xyz="0.5 -0.5 -0.9" rpy="0 0 -1.5708"/>
+        <origin xyz="0.75 -0.5 -1.0" rpy="0 0 -1.5708"/>
     </joint>
 
 </robot>
